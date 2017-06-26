@@ -5,7 +5,6 @@ var WebClient = require('@slack/client').WebClient;
 var token = process.env.Token;
 var web = new WebClient(token);
 
-
 function updateUsergroup(group, callback) {
     var groupid = group["id"];
     var opts = {};

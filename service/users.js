@@ -72,9 +72,9 @@ function deactivateUser(userId) {
 }
 
 
-function user(req, res) {
-var usr = req.post;
-if (req.method == "GET") {
+function user(request, response) {
+var usr = request.post;
+if (request.method == "GET") {
 GetUsers(function (userlist) {
       userlist = userlist;
       Object(userlist.members).forEach(function (element, key, _array) {
@@ -85,25 +85,52 @@ GetUsers(function (userlist) {
           element["_id"] = element["id"];
         }
       })
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.end(JSON.stringify(userlist));
+      response.writeHead(200, { "Content-Type": "application/json" });
+      response.end(JSON.stringify(userlist));
 
     });
 
-} else if(req.method == "POST" ){
-        Object(usr.users).forEach(function (element, key, _array) {
-          if(element['id'] != "" && element["_deleted"]){
-           deactivateUser(element['slack-user:id']);
+} else if(request.method == "POST" ){
+
+
+console.log(request.method);
+console.log(request.body);
+///console.log(request);
+// var headers = request.headers;
+//   var method = request.method;
+//   var urle = request.url;
+//   var body = [];
+
+
+//   request.on('error', function(err) {
+//     console.error(err);
+//   }).on('data', function(chunk) {
+//     body.push(chunk);
+//   }).on('end', function() {
+//     body = Buffer.concat(body).toString();
+//     // At this point, we have the headers, method, url and body, and can now
+//     // do whatever we need to in order to respond to this request.
+//     console.log(body);
+//   });
+
+
+  //console.log(body);
+    // console.log(response.statusCode);
+        // Object(usr.users).forEach(function (element, key, _array) {
+        //   if(element['id'] != "" && element["_deleted"]){
+        //    deactivateUser(element['slack-user:id']);
            
-          }else if (element['id'] != "" && !element["_deleted"]) {
-            setProfile(element);
+        //   }else if (element['id'] != "" && !element["_deleted"]) {
+        //     setProfile(element);
 
-          } else if (element['id'] == "" && !element["_deleted"]){
-            inviteUser(element['email']);
-          }
-        }
+        //   } else if (element['id'] == "" && !element["_deleted"]){
+        //     inviteUser(element['email']);
+        //   }
+        // }
 
-        )}
+       // )}
+}
+
 }
 
 GetUsers = function (callback) {
