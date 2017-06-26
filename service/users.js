@@ -91,9 +91,6 @@ GetUsers(function (userlist) {
     });
 
 } else if(request.method == "POST" ){
-
-
-console.log(request.method);
 console.log(request.body);
 ///console.log(request);
 // var headers = request.headers;

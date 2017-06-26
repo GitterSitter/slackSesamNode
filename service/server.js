@@ -7,8 +7,8 @@ var port = 8000;
 var userGroups = require('./usergroups');
 var users = require('./users');
 
-// var express = require('express')
-// var bodyParser = require('body-parser');
+var express = require('express')
+var bodyParser = require('body-parser');
 
 var handle = {};
 handle['/users'] = users.user;
@@ -48,6 +48,9 @@ var responseBody = {
       url: c,
       body: data
     };
+
+
+console.log(request.post + " duuude");
 
   if (typeof handle[pathname] === 'function') {
     return handle[pathname](responseBody,response);
