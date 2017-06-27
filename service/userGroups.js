@@ -86,7 +86,6 @@ CreateUserGroup = function (group, channel, callback) {
 };
 
 function usergroup(req,res){
-
     if(req.method == "GET"){    
     GetUsergroups(function(usergrouplist) {
       Object(usergrouplist.usergroups).forEach(function(element, key, _array) {
@@ -120,6 +119,8 @@ GetUsergroups = function(callback) {
             return callback(reponse);
         }
     }); 
+
+    
 
 }
 

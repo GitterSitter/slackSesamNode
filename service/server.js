@@ -49,9 +49,6 @@ var responseBody = {
       body: data
     };
 
-
-console.log(request.post + " duuude");
-
   if (typeof handle[pathname] === 'function') {
     return handle[pathname](responseBody,response);
   } else {

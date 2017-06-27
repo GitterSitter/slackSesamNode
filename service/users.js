@@ -91,42 +91,25 @@ GetUsers(function (userlist) {
     });
 
 } else if(request.method == "POST" ){
-console.log(request.body);
-///console.log(request);
-// var headers = request.headers;
-//   var method = request.method;
-//   var urle = request.url;
-//   var body = [];
 
+      var test =  JSON.parse(request.body);
+      console.log(test);
 
-//   request.on('error', function(err) {
-//     console.error(err);
-//   }).on('data', function(chunk) {
-//     body.push(chunk);
-//   }).on('end', function() {
-//     body = Buffer.concat(body).toString();
-//     // At this point, we have the headers, method, url and body, and can now
-//     // do whatever we need to in order to respond to this request.
-//     console.log(body);
-//   });
+        Object(test).forEach(function (element, key, _array) {
+          if(element['id'] != "" && element["deleted"]){
+          // deactivateUser(element['slack-user:id']);
+          console.log("Deactivate user\n\n");
+          }else if (element['id'] != "" && !element["deleted"]) {
+           // setProfile(element);
+          console.log("Update Profile for user\n\n");
+          } else if (element['id'] == "" && !element["deleted"]){
+          //  inviteUser(element['email']);
+          console.log("Invite user for user\n\n");
+          }
+        }
 
+       )}
 
-  //console.log(body);
-    // console.log(response.statusCode);
-        // Object(usr.users).forEach(function (element, key, _array) {
-        //   if(element['id'] != "" && element["_deleted"]){
-        //    deactivateUser(element['slack-user:id']);
-           
-        //   }else if (element['id'] != "" && !element["_deleted"]) {
-        //     setProfile(element);
-
-        //   } else if (element['id'] == "" && !element["_deleted"]){
-        //     inviteUser(element['email']);
-        //   }
-        // }
-
-       // )}
-}
 
 }
 
